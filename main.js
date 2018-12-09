@@ -478,6 +478,27 @@ function slowSort(arr, i, j) {
     return arr;
 }
 
+function inquisitorSort(arr) {
+    let min = arr[0];
+    let outputArr = arr;
+    //let offset = 0;
+    let i = 1;
+
+    while (i < arr.length) {
+        if (arr[i] > min) {
+            min = arr[i];
+            i++;
+        } else {
+            //outputArr[i] = 0;
+            arr.splice(i, 1);
+        }
+        newData = buildScatterPlotData(arr);
+        setTimeout(updateScatterPlot, 1, myChart, newData);
+    }
+
+    return arr;
+}
+
 
 // get the canvas context that we will draw the chart in
 let ctx = document.getElementById('myChart');
@@ -832,6 +853,23 @@ Code:
     }
     arr = slowSort(arr, i, j - 1);
     return arr;
+}</code></pre></p>`,
+inquisitor : `<p>Worst-case Complexity: O(n)<br><br>
+Explanation: Just like nobody expects the Spanish Inquisition, nobody really expects the Inquisitor sort to work. It is, however, extremely efficient.<br><br>
+Code: 
+<pre><code>function inquisitorSort(arr) {
+    let min = arr[0];
+    let outputArr = arr;
+    let i = 1;
+    while (i < arr.length) {
+        if (arr[i] > min) {
+            min = arr[i];
+            i++;
+        } else {
+            arr.splice(i, 1);
+        }
+    }
+    return arr;
 }</code></pre></p>`
 };
 
@@ -885,6 +923,9 @@ document.getElementById('beginSort').onclick = function () {
             break;
         case 'slow':
             slowSort(initList, 0, initList.length - 1);
+            break;
+        case 'inquisitor':
+            inquisitorSort(initList, 0);
             break;
         default:
             alert("That algorithm does not exist");
