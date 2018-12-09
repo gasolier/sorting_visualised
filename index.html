@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <script type="text/javascript" src='node_modules/chart.js/dist/Chart.js'></script>
+        <link rel="stylesheet" type="text/css" href="main.css">
+
+        <title>Sorting Algorithms Visualised</title>
+    </head>
+    
+    <body>
+        <h2>Sorting Algorithms Visualised</h2>
+
+        <canvas id='myChart' width='600' height='600'></canvas>
+
+        <select id='typeSet'>
+            <optgroup label="Simple Sorts">
+                <option value='bubble'>Bubble Sort</option>
+                <option value='cocktail'>Cocktail Sort</option>
+                <option value='oddEven'>Odd-even Sort</option>
+                <option value='gnome'>Gnome Sort</option>
+                <option value='selection'>Selection Sort</option>
+                <option value='insertion'>Insertion Sort</option>
+            </optgroup>
+            <optgroup label='Slightly More Complex Sorts'>
+                <option value='merge'>Merge Sort</option>
+                <option value='comb'>Comb Sort</option>
+                <option value='radix'>Radix Sort</option>
+                <option value='bucket'>Bucket Sort</option>
+                <option value='quick'>Quick Sort</option>
+            </optgroup>
+            <optgroup label="Best Sorts">
+                <option value="bogo">Bogo Sort</option>
+                <option value='stooge'>Stooge Sort</option>
+                <option value='slow'>Slow Sort</option>
+            </optgroup>>
+        </select>
+        <button id='beginSort'>Begin Sort</button>
+        <button id='randomiseList'>Randomise</button>
+
+        <div id = 'description'>
+            <p>
+Complexity: O(n<sup>2</sup>) <br><br>
+Explanation: Not real good tbh <br><br>
+Code: 
+<pre><code>function bubbleSort(arr) {
+    let n = arr.length;
+    while (true) {
+        let swapped = false;
+        for (let i = 0; i < n; i++) {
+            if (arr[i] > arr[i + 1]) {
+                arr = swap(i, i + 1, arr);
+                swapped = true;
+            }
+        }
+        n--;
+        if (!swapped) {
+            break;
+        }
+    }
+    return arr;
+}</code></pre></p>
+        </div>
+
+        <script type="text/javascript" src='main.js'></script>
+    </body>
+</html>
