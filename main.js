@@ -499,6 +499,17 @@ function inquisitorSort(arr) {
     return arr;
 }
 
+function communismSort(arr) {
+    let s = Math.floor(arr.reduce((x,y) => {return x + y;}) / arr.length);
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = s;
+        newData = buildScatterPlotData(arr);
+        setTimeout(updateScatterPlot, 1, myChart, newData);
+    }
+
+    return arr;
+}
+
 
 // get the canvas context that we will draw the chart in
 let ctx = document.getElementById('myChart');
@@ -870,6 +881,16 @@ Code:
         }
     }
     return arr;
+}</code></pre></p>`,
+communism : `<p>Worst-case Complexity: O(☭)<br><br>
+Explanation: Seize the means of production, read the Bread Book, etc, etc.<br><br>
+Code: 
+<pre><code>function communismSort(arr) {
+    let s = Math.floor(arr.reduce((x,y) => {return x + y;}) / arr.length);
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = s;
+    }
+    return arr;
 }</code></pre></p>`
 };
 
@@ -927,6 +948,9 @@ document.getElementById('beginSort').onclick = function () {
         case 'inquisitor':
             inquisitorSort(initList, 0);
             break;
+        case 'communism':
+            communismSort(initList);
+            break;
         default:
             alert("That algorithm does not exist");
     }
@@ -974,6 +998,11 @@ document.getElementById('typeSet').onchange = function (ev) {
         initList = generateRandomList(100);
         initData = buildScatterPlotData(initList);
 
-        updateScatterPlot(myChart, initData)
+        updateScatterPlot(myChart, initData);
+    } else {
+        initList = generateRandomList(600);
+        initData = buildScatterPlotData(initList);
+
+        updateScatterPlot(myChart, initData);
     }
 }
